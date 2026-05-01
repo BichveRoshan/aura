@@ -5,37 +5,46 @@
   
   --spacing-saas-gutter: clamp(1.5rem, 6vw, 10rem);
   
-  --color-background: #ffffff;
-  --color-foreground: #111111;
-  --color-muted: #fafafa;
-  --color-border: rgba(0,0,0,0.06);
+  --color-background: #05060f;
+  --color-surface: #0a0b1e;
+  --color-surface-hover: #12142d;
+  --color-foreground: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.4);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #a855f7;
+  --color-accent-pink: #ec4899;
 
   --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
 
   @keyframes reveal {
     0% { opacity: 0; transform: translateY(10px) scale(0.99); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 5px rgba(168, 85, 247, 0.2), 0 0 10px rgba(168, 85, 247, 0.1); }
+    to { box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 30px rgba(168, 85, 247, 0.3); }
+  }
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased selection:bg-black selection:text-white;
+    @apply bg-background text-foreground antialiased selection:bg-purple-500 selection:text-white;
+    background-image: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
   }
 }
 
-.markdown-body {
-  @apply font-light leading-relaxed;
+.glass-panel {
+  @apply bg-surface border border-border rounded-xl backdrop-blur-xl;
 }
 
-.markdown-body h1 {
-  @apply text-4xl font-extralight tracking-tighter mb-8;
+.neon-text {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.markdown-body h2 {
-  @apply text-xl font-medium tracking-tight mt-12 mb-4;
-}
-
-.markdown-body p {
-  @apply mb-6 opacity-80;
+.header-blur {
+  @apply sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border;
 }

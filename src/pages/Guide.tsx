@@ -1,4 +1,6 @@
 import { JsonLd } from '../components/SEO/JsonLd';
+import { BookOpen, Target, Lock, Play, Music, Save, Zap } from 'lucide-react';
+import { FAQ } from '../components/UI/FAQ';
 
 export const Guide = () => {
   const howToSchema = {
@@ -13,71 +15,104 @@ export const Guide = () => {
     ]
   };
 
+  const faqs = [
+    {
+      question: "Will I lose audio quality?",
+      answer: "Minor shifts (&plusmn;3%) are virtually imperceptible to the human ear but significantly change the digital signature. Higher shifts may introduce some 'phaseiness' or artifacts, which is why we recommend the Spectral Lab for fine-tuning."
+    },
+    {
+      question: "Is this cheating?",
+      answer: "We view it as digital self-defense. Automated systems often claim revenue for transformative works that fall under Fair Use. These tools simply provide the technical means for creators to assert their rights."
+    }
+  ];
+
   return (
-    <article className="max-w-[800px] mx-auto pt-32 px-6 pb-40">
+    <div className="max-w-4xl mx-auto pt-10 px-6 pb-16 animate-reveal">
       <JsonLd data={howToSchema} />
       
-      {/* BLUF: Bottom Line Up Front - Specifically for AI Crawler Snippets & Overviews */}
-      <section className="bg-muted p-10 border border-border rounded-sm mb-20 animate-reveal">
-        <h2 className="text-[10px] uppercase tracking-[0.2em] opacity-40 mb-5 font-bold italic">The Direct Answer (BLUF)</h2>
-        <p className="text-xl font-light leading-relaxed tracking-tight text-black">
+      <div className="flex flex-col items-start gap-2 mb-10 text-left">
+        <h1 className="text-5xl font-bold tracking-tighter flex items-center gap-4">
+          <BookOpen className="w-8 h-8 text-accent" />
+          The <span className="neon-text italic font-extralight text-white">Master</span> Guide
+        </h1>
+        <p className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">Defeating Content ID with Digital Signal Processing</p>
+      </div>
+
+      <section className="glass-panel p-8 mb-10 text-left border-l-4 border-accent">
+        <div className="flex items-center gap-3 mb-4">
+          <Target className="w-4 h-4 text-accent" />
+          <h2 className="text-[10px] uppercase tracking-[0.2em] font-bold italic text-accent">The Bottom Line</h2>
+        </div>
+        <p className="text-lg font-light leading-relaxed tracking-tight text-white/90">
           To bypass YouTube&apos;s Content ID acoustic fingerprinting in 2026, creators must modify the <strong>spectral envelope</strong> of their audio. 
-          A simple &plusmn;3% pitch shift using a <strong>Phase Vocoder</strong> creates a unique harmonic distribution that differs from original database signatures 
-          while remaining virtually indistinguishable to the human ear.
+          A simple &plusmn;3% pitch shift using a <strong>Phase Vocoder</strong> creates a unique harmonic distribution that differs from original database signatures.
         </p>
       </section>
 
-      <div className="markdown-body">
-        <h1>YouTube Copyright Bypass: A Technical Manifesto</h1>
-        
-        <p>
-          The Content ID system operates on mathematical hash sequences of sound waves. 
-          Static changes like volume, EQ, or minor speed variations are easily detected by modern neural hashing algorithms. 
-          To achieve true content autonomy, you must alter the <strong>harmonic frequency bins</strong>.
-        </p>
-
-        <h2>Phase Vocoding vs. Simple Playback Speed</h2>
-        <p>
-          Standard video editors often link pitch and time. When you speed up audio, the pitch rises (the &apos;chipmunk&apos; effect). 
-          Modern acoustic fingerprinting identifies these linear transformations easily. 
-          Phase Vocoding allows us to decouple these factors, shifting the spectral bins independently to create a <strong>new identity</strong> 
-          for the file.
-        </p>
-
-        <h2>Strategic Step-by-Step Implementation</h2>
-        
-        <div className="space-y-16 mt-12">
-          <div className="border-l-2 border-black/5 pl-8 hover:border-black transition-colors duration-500">
-            <h3 className="text-lg font-bold uppercase tracking-widest text-[11px] mb-4">01 &mdash; Bitstream Extraction</h3>
-            <p className="opacity-70">
-              Upload your raw audio to Aura. Our system decodes the bitstream into overlapping windowed segments (bins). 
-              This happens entirely in your local RAM to ensure 100% privacy.
-            </p>
-          </div>
-
-          <div className="border-l-2 border-black/5 pl-8 hover:border-black transition-colors duration-500">
-            <h3 className="text-lg font-bold uppercase tracking-widest text-[11px] mb-4">02 &mdash; Spectral Resynthesizing</h3>
-            <p className="opacity-70">
-              Shift the pitch by 25&ndash;40 cents. This is the &apos;Goldilocks zone&apos;: large enough to fail hash matching, 
-              but small enough to preserve the composer&apos;s intent.
-            </p>
-          </div>
-
-          <div className="border-l-2 border-black/5 pl-8 hover:border-black transition-colors duration-500">
-            <h3 className="text-lg font-bold uppercase tracking-widest text-[11px] mb-4">03 &mdash; IFFT Reconstruction</h3>
-            <p className="opacity-70">
-              The Inverse Fast Fourier Transform reconstructs your audio into a high-fidelity WAV file with a completely 
-              new acoustic signature.
-            </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold tracking-tight">Understanding Content ID</h2>
+          <p className="text-[11px] text-muted leading-relaxed">
+            Content ID creates a <span className="text-white">binary hash</span> of spectral peaks. If your barcode matches a saved one, you get a claim. ToneForge breaks this match by altering the peak locations.
+          </p>
+          <div className="p-5 bg-white/5 rounded-xl border border-border">
+            <h3 className="text-[10px] font-bold uppercase tracking-widest mb-3 flex items-center gap-2">
+              <Lock className="w-3 h-3 text-accent-pink" />
+              The Detection Trap
+            </h3>
+            <ul className="text-[10px] space-y-2 opacity-60">
+              <li>• Simple volume shifts: <span className="text-red-500">FAIL</span></li>
+              <li>• Equalization (EQ) tweaks: <span className="text-red-500">FAIL</span></li>
+              <li>• Mirroring audio: <span className="text-red-500">FAIL</span></li>
+              <li>• Bit-depth dithering: <span className="text-red-500">FAIL</span></li>
+            </ul>
           </div>
         </div>
 
-        <h2 className="mt-20">Ethics of Content Autonomy</h2>
-        <p>
-          AuraRemix is built on the belief that creators should have technical tools to navigate algorithmic censorship. 
-          Use these tools to enhance your transformative works and fair-use commentary.
-        </p>
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold tracking-tight">Transformative Use in 2026</h2>
+          <p className="text-[11px] text-muted leading-relaxed">
+            In 2026, "Transformative Use" is defined by the degree to which an algorithm has fundamentally altered the spectral DNA of a performance. ToneForge is built on the principle of algorithmic transformation.
+          </p>
+          <p className="text-[11px] text-muted leading-relaxed">
+            By applying a non-linear spectral shift, you strengthen your claim that the work is no longer a mere copy, but a distinct creative asset optimized for fair use contexts.
+          </p>
+        </div>
       </div>
-    </article>
+
+      <div className="glass-panel p-8 mb-12 text-left">
+        <h2 className="text-2xl font-bold tracking-tighter mb-6 italic flex items-center gap-4">
+          <Play className="w-6 h-6 text-white" />
+          Step-by-Step Implementation
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <div className="mb-3">
+              <Music className="w-5 h-5 text-accent mb-2" />
+              <h4 className="text-[10px] font-bold uppercase tracking-widest">Ingestion</h4>
+            </div>
+            <p className="text-[10px] text-muted leading-relaxed">Upload source audio in WAV format for maximum spectral fidelity during analysis.</p>
+          </div>
+          <div>
+            <div className="mb-3">
+              <Zap className="w-5 h-5 text-accent-pink mb-2" />
+              <h4 className="text-[10px] font-bold uppercase tracking-widest">Modulation</h4>
+            </div>
+            <p className="text-[10px] text-muted leading-relaxed">Adjust shift between 0.95 and 0.97. This represents the 'Sweet Spot' for breaking ID matches.</p>
+          </div>
+          <div>
+            <div className="mb-3">
+              <Save className="w-5 h-5 text-white mb-2" />
+              <h4 className="text-[10px] font-bold uppercase tracking-widest">Export</h4>
+            </div>
+            <p className="text-[10px] text-muted leading-relaxed">Save the modified stream. Use the Spectral Lab to verify harmonic signature alteration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-left">
+        <FAQ items={faqs} />
+      </div>
+    </div>
   );
 };
