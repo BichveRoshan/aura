@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --spacing-saas-gutter: clamp(1.5rem, 6vw, 10rem);
+  
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-muted: #fafafa;
+  --color-border: rgba(0,0,0,0.06);
+
+  --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes reveal {
+    0% { opacity: 0; transform: translateY(10px) scale(0.99); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-black selection:text-white;
+  }
+}
+
+.markdown-body {
+  @apply font-light leading-relaxed;
+}
+
+.markdown-body h1 {
+  @apply text-4xl font-extralight tracking-tighter mb-8;
+}
+
+.markdown-body h2 {
+  @apply text-xl font-medium tracking-tight mt-12 mb-4;
+}
+
+.markdown-body p {
+  @apply mb-6 opacity-80;
+}
